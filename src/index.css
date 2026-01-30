@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* BACKGROUND WATERMARK LOGIC */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+    url('./assets/background.jpeg'); /* Make sure path is correct */
+  
+  background-size: 75%; /* 3/4th of the page width */
+  background-position: center center; /* Dead center */
+  background-repeat: no-repeat; /* STOP REPEATING */
+  background-attachment: fixed; /* Stay put while scrolling */
+  background-color: #ffffff; /* Fills the rest of the page with white */
+  
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
