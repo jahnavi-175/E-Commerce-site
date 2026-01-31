@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Help from "./pages/Help";
 import Checkout from "./pages/Checkout";
+import Thankyou from "./pages/Thankyou";
 
 function App() {
   const isAuthenticated = () => !!localStorage.getItem("token");
@@ -23,7 +24,7 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/home" element={isAuthenticated() ? <Home /> : <Navigate to="/" />} />
-            <Route path="/cart" element={isAuthenticated() ? <Cart /> : <Navigate to="/" />} /> 
+            <Route path="/cart" element={isAuthenticated() ? <Cart /> : <Navigate to="/" />} />
             <Route path="/all-items" element={isAuthenticated() ? <Product /> : <Navigate to="/" />} />
             <Route path="/product-detail/:id" element={isAuthenticated() ? <ProductDetail /> : <Navigate to="/" />} />
             <Route path="/account" element={isAuthenticated() ? <Account /> : <Navigate to="/" />} />
@@ -31,6 +32,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/help" element={<Help />} />
             <Route path="/checkout" element={isAuthenticated() ? <Checkout /> : <Navigate to="/" />} />
+            <Route path="/thankyou" element={<Thankyou />} />
           </Routes>
         </BrowserRouter>
       </CartProvider>
