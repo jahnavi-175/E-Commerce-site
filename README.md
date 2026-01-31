@@ -1,4 +1,4 @@
-E-Commerce website project on a website that offers books and stationary items.
+# E-Commerce website project on a website that offers books and stationary items.
 # Project Objective
 The objective of this project is to design and develop a full‑stack E‑Commerce web application using the MERN stack that allows users to browse products, add them to a cart, securely authenticate, and complete payments using the Paytm payment gateway.
 # Project Description
