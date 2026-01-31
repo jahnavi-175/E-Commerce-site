@@ -12,10 +12,9 @@ import Contact from "./pages/Contact";
 import Help from "./pages/Help";
 import Checkout from "./pages/Checkout";
 import Thankyou from "./pages/Thankyou";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-  const isAuthenticated = () => !!localStorage.getItem("token");
-
   return (
     <div>
       <CartProvider>
@@ -23,15 +22,19 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/home" element={isAuthenticated() ? <Home /> : <Navigate to="/" />} />
-            <Route path="/cart" element={isAuthenticated() ? <Cart /> : <Navigate to="/" />} />
-            <Route path="/all-items" element={isAuthenticated() ? <Product /> : <Navigate to="/" />} />
-            <Route path="/product-detail/:id" element={isAuthenticated() ? <ProductDetail /> : <Navigate to="/" />} />
-            <Route path="/account" element={isAuthenticated() ? <Account /> : <Navigate to="/" />} />
+
+            {/* Protected Routes */}
+            <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+            <Route path="/all-items" element={<ProtectedRoute><Product /></ProtectedRoute>} />
+            <Route path="/product-detail/:id" element={<ProtectedRoute><ProductDetail /></ProtectedRoute>} />
+            <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
+            <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+
+            {/* Public/Other Routes */}
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/help" element={<Help />} />
-            <Route path="/checkout" element={isAuthenticated() ? <Checkout /> : <Navigate to="/" />} />
             <Route path="/thankyou" element={<Thankyou />} />
           </Routes>
         </BrowserRouter>
