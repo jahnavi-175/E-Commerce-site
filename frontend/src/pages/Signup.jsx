@@ -16,8 +16,8 @@ const Signup = () => {
       alert("Account created successfully! Please login to continue.");
       navigate("/"); 
     } catch (err) {
-      console.error(err);
-      alert(err.response?.data?.message || "Signup failed. Please try again.");
+      console.log(err);
+      res.status(500).json({ message: "Signup failed" });
     } finally {
       setLoading(false);
     }
@@ -114,5 +114,6 @@ const styles = {
   footerText: { marginTop: "20px", color: "#5D4037" },
   link: { color: "#795548", textDecoration: "none", fontWeight: "bold" }
 };
+
 
 export default Signup;
