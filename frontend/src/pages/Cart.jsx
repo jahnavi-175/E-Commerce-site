@@ -18,7 +18,7 @@ const Cart = () => {
       <div style={styles.container}>
         <div style={styles.card}>
           <h1 style={styles.heading}>Your Shopping Cart</h1>
-          
+
           {cart.length > 0 ? (
             <>
               <div style={styles.itemList}>
@@ -30,15 +30,15 @@ const Cart = () => {
                     </div>
                     <div style={styles.itemPriceSection}>
                       <span style={styles.price}>₹{item.price * item.quantity}</span>
-                      <button 
-                        style={styles.removeBtn} 
+                      <button
+                        style={styles.removeBtn}
                         onClick={() => removeFromCart(item._id)}
                       >
                         Remove
                       </button>
-                      <button 
-                        style={styles.checkoutBtn} 
-                        onClick={() => navigate("/all-items")} 
+                      <button
+                        style={styles.checkoutBtn}
+                        onClick={() => navigate("/all-items")}
                       >
                         Go to Items
                       </button>
@@ -46,12 +46,12 @@ const Cart = () => {
                   </div>
                 ))}
               </div>
-              
+
               <div style={styles.totalSection}>
                 <h3 style={styles.totalText}>Total Amount: ₹{total}</h3>
-                <button 
-                  style={styles.checkoutBtn} 
-                  onClick={() => navigate("/thank-you")}
+                <button
+                  style={styles.checkoutBtn}
+                  onClick={() => navigate("/checkout")}
                 >
                   Proceed to Payment
                 </button>
