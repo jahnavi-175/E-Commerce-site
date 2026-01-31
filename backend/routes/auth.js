@@ -13,10 +13,8 @@ router.post('/signup', async (req, res) => {
     await newUser.save();
     res.status(201).json({ message: "User created successfully" });
   } catch (err) {
-      console.error("Signup error:", err);
-  
-      res.status(500).json({
-      message: err.message
+      console.log(err);
+      res.status(500).json({ message: "Signup failed" });
   });
   }
 });
@@ -38,3 +36,4 @@ router.post('/login', async (req, res) => {
 
 
 module.exports = router;
+
