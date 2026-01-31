@@ -86,7 +86,11 @@ Product Details Page: ![Details Page](./screenshots/Details.png)
 🛍️ Shopping & Checkout
 Shopping Cart: ![Cart Page](./screenshots/Cart.png)
 
-Paytm Payment Gateway: ![Payment Page](./screenshots/payment.png)
+Payment Gateway: ![Payment Page](./screenshots/payment.png)
+
+Paytm Payment Gateway: ![Paytm Payment Page](./screenshots/paymentm.png)
+
+Thankyou: ![Thankyou Page](./screenshots/thankyou.png)
 
 ℹ️ Account & Support Pages
 These pages ensure a complete user experience and easy navigation for help or contact.
