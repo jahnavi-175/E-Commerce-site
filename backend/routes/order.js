@@ -4,20 +4,25 @@ const Order = require('../models/Order');
 
 router.post('/create-cod', async (req, res) => {
   try {
-    const { userId, items, amount, paymentMethod } = req.body;
+    const { userId, items, amount, paymentStatus } = req.body;
     
     const newOrder = new Order({
       userId,
-      items,
-      amount,
+      products: items,
+      totalAmount: amount,
       orderId: "ORD-" + Date.now(),
-      paymentStatus: paymentMethod === "Online" ? "Success" : "Pending",
+      paymentStatus: paymentStatus || "Pending", 
     });
 
     await newOrder.save();
-    res.status(201).json({ success: true });
+    
+    res.status(201).json({ 
+      success: true, 
+      message: "Order placed successfully!", 
+      orderId: newOrder.orderId 
+    });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ success: false, error: error.message });
   }
 });
 
