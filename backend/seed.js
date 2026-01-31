@@ -12,15 +12,40 @@ const products = [
   { name: "Luxury Fountain Pen", price: 1200, category: "Stationery", description: "Fine ink experience.", image: "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400", stock: 25 }
 ];
 
-for (let i = 6; i <= 40; i++) {
-  const type = i % 2 === 0 ? "Book" : "Stationery Item";
+// Reliable Image URLs (Books & Stationery)
+const bookImages = [
+  "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=400",
+  "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400",
+  "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=400",
+  "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=400",
+  "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=400",
+  "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=400"
+];
+
+const stationeryImages = [
+  "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=400",
+  "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400",
+  "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=400",
+  "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=400",
+  "https://images.unsplash.com/photo-1456735190827-d1261f7add50?auto=format&fit=crop&w=400"
+];
+
+for (let i = 1; i <= 45; i++) {
+  const isBook = i % 2 !== 0;
+  const category = isBook ? "Books" : "Stationery";
+  const type = isBook ? "Book" : "Stationery";
+
+  // Pick random image from arrays
+  const imageList = isBook ? bookImages : stationeryImages;
+  const image = imageList[Math.floor(Math.random() * imageList.length)];
+
   products.push({
-    name: `${type} ${i}`,
-    price: Math.floor(Math.random() * 800) + 100,
-    category: i % 2 === 0 ? "Books" : "Stationery",
-    description: `High quality ${type} for daily use.`,
-    image: `https://images.unsplash.com/photo-${1500000000000 + (i * 1000)}?auto=format&fit=crop&w=400`,
-    stock: 30
+    name: `${type} Item ${i}`,
+    price: Math.floor(Math.random() * 900) + 100, // Price between 100-1000
+    category: category,
+    description: `This is a high-quality ${type.toLowerCase()} suitable for all your needs. Item number ${i} in our catalog.`,
+    image: image,
+    stock: Math.floor(Math.random() * 50) + 10
   });
 }
 
@@ -28,6 +53,6 @@ mongoose.connect(process.env.MONGO_URI)
   .then(async () => {
     await Product.deleteMany({});
     await Product.insertMany(products);
-    console.log("✅ 40 Products Seeded!");
+    console.log(`✅ ${products.length} Products Seeded!`);
     process.exit();
   });
