@@ -6,16 +6,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* BACKGROUND WATERMARK LOGIC */
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-    url('./assets/background.jpeg'); /* Make sure path is correct */
+    url('./assets/background.jpeg'); 
   
-  background-size: 75%; /* 3/4th of the page width */
-  background-position: center center; /* Dead center */
-  background-repeat: no-repeat; /* STOP REPEATING */
-  background-attachment: fixed; /* Stay put while scrolling */
-  background-color: #ffffff; /* Fills the rest of the page with white */
+  background-size: 75%; 
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #ffffff;
   
   min-height: 100vh;
 }
@@ -23,4 +22,65 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    flex-direction: column !important;
+    padding: 15px !important;
+    gap: 15px;
+  }
+  
+  nav > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center !important;
+    width: 100%;
+  }
+
+  nav > div:last-child { 
+    gap: 10px !important;
+  }
+
+  nav a {
+    font-size: 13px !important;
+    margin: 0 5px;
+  }
+
+  h1 {
+    font-size: 2rem !important; 
+  }
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  p {
+    font-size: 1rem !important;
+  }
+
+  div[style*="boxShadow"] {
+    width: 90% !important;
+    max-width: 100% !important;
+    padding: 20px !important;
+    margin: 10px auto !important;
+  }
+
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  div[style*="overflow: hidden"] {
+    height: auto !important; 
+    min-height: 200px;
+  }
+
+  button {
+    padding: 12px 20px !important;
+    width: 100%; 
+    max-width: 300px;
+  }
+
+  body {
+    background-size: cover !important;
+  }
 }
