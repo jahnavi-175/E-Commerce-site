@@ -8,8 +8,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/orders', require('./routes/order'));
 app.use('/api/products', require('./routes/product'));
+app.use('/api/orders', require('./routes/order'));
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
@@ -17,4 +17,3 @@ mongoose.connect(process.env.MONGO_URI)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-
