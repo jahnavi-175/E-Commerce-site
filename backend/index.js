@@ -6,9 +6,9 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use('/api/payment', require('./routes/payment'));
-app.use('/api/orders', require('./routes/order'));
+
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/orders', require('./routes/order'));
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
