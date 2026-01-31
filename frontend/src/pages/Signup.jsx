@@ -17,7 +17,7 @@ const Signup = () => {
       navigate("/"); 
     } catch (err) {
       console.log(err);
-      res.status(500).json({ message: "Signup failed" });
+      alert(err.response?.data?.message || "Signup failed");
     } finally {
       setLoading(false);
     }
@@ -117,3 +117,4 @@ const styles = {
 
 
 export default Signup;
+
