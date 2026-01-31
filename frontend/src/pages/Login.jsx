@@ -2,17 +2,25 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import apiClient from "../api/apiClient";
 
+import { useEffect } from "react";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    
+    console.log("API Base URL:", apiClient.defaults.baseURL);
+  }, []);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
+
       const { data } = await apiClient.post("/auth/login", { email, password });
 
       localStorage.setItem("token", data.token);
@@ -21,7 +29,8 @@ const Login = () => {
       navigate("/home");
     } catch (err) {
       console.error(err);
-      alert(err.response?.data?.message || "Invalid credentials. Please try again.");
+     
+      alert(`Login Failed!\nURL: ${apiClient.defaults.baseURL}\nError: ${err.message}\nResponse: ${JSON.stringify(err.response?.data)}`);
     } finally {
       setLoading(false);
     }
@@ -32,29 +41,29 @@ const Login = () => {
       <div style={styles.card}>
         <h2 style={styles.heading}>Welcome Back</h2>
         <p style={styles.subHeading}>Login to access your Bookstore & Stationary hub.</p>
-        
+
         <form onSubmit={handleLogin} style={styles.form}>
-          <input 
-            type="email" 
-            placeholder="Email Address" 
+          <input
+            type="email"
+            placeholder="Email Address"
             value={email}
-            onChange={(e) => setEmail(e.target.value)} 
-            required 
+            onChange={(e) => setEmail(e.target.value)}
+            required
             style={styles.input}
           />
-          <input 
-            type="password" 
-            placeholder="Password" 
+          <input
+            type="password"
+            placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)} 
-            required 
+            onChange={(e) => setPassword(e.target.value)}
+            required
             style={styles.input}
           />
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={loading}
-            style={{ 
-              ...styles.button, 
+            style={{
+              ...styles.button,
               backgroundColor: loading ? "#A1887F" : "#5D4037",
               cursor: loading ? "not-allowed" : "pointer"
             }}
@@ -62,7 +71,7 @@ const Login = () => {
             {loading ? "Verifying..." : "Login"}
           </button>
         </form>
-        
+
         <p style={styles.footerText}>
           New user? <Link to="/signup" style={styles.link}>Register here</Link>
         </p>
@@ -77,7 +86,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     height: "100vh",
-    backgroundColor: "#EFEBE9", 
+    backgroundColor: "#EFEBE9",
     fontFamily: "'Georgia', serif"
   },
   card: {
