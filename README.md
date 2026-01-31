@@ -1,4 +1,3 @@
-<img width="1896" height="800" alt="Screenshot 2026-02-01 003733" src="https://github.com/user-attachments/assets/f436e0c4-5afa-4f04-96d2-12820785ab7f" /># E-Commerce-site
 E-Commerce website project on a website that offers books and stationary items.
 # Project Objective
 The objective of this project is to design and develop a full‑stack E‑Commerce web application using the MERN stack that allows users to browse products, add them to a cart, securely authenticate, and complete payments using the Paytm payment gateway.
